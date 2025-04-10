@@ -1309,6 +1309,7 @@ export default function ContractForm() {
   const [contract, setContract] = useState({
     fechaSolicitud: "",
     centroCostos: "",
+    secretaria: "",
     tipoContrato: "",
     modalidadSeleccion: "",
     objetoContractual: "",
@@ -1397,6 +1398,7 @@ export default function ContractForm() {
         setContract({
           fechaSolicitud: data.fecha_solicitud || "",
           centroCostos: data.centro_costos || "",
+          secretaria: data.secretaria || "", 
           tipoContrato: data.tipo_contrato || "",
           modalidadSeleccion: data.modalidad_seleccion || "",
           objetoContractual: data.objeto_contractual || "",
@@ -1471,6 +1473,7 @@ export default function ContractForm() {
         fecha_solicitud: contract.fechaSolicitud || null, // Usar null si está vacío
         centro_costos: contract.centroCostos,
         tipo_contrato: contract.tipoContrato,
+        secretaria: contract.secretaria,
         modalidad_seleccion: contract.modalidadSeleccion,
         objeto_contractual: contract.objetoContractual,
         duracion_estimada: contract.duracionEstimada,
@@ -1699,6 +1702,48 @@ export default function ContractForm() {
                     <option value="22001">22001 CONTROL DISCIPLINARIO</option>
                     <option value="23001">23001 DIRECCIÓN FINANCIERA</option>
                     <option value="23002">23002 COBRO COACTIVO</option>
+                  </select>
+                </div>
+              </td>
+              <td>
+                {/* Nuevo campo de secretaría */}
+                <div className="form-group">
+                  <label htmlFor="secretaria" className="required">
+                    Secretaría
+                  </label>
+                  <select
+                    id="secretaria"
+                    name="secretaria"
+                    className="form-control"
+                    value={contract.secretaria}
+                    onChange={handleChange}
+                    required
+                    disabled={!canEdit()}
+                  >
+                    <option value="">Seleccionar...</option>
+                    <option value="Departamento Administrativo de Planeación">
+                      Departamento Administrativo de Planeación
+                    </option>
+                    <option value="Secretaría de Salud">Secretaría de Salud</option>
+                    <option value="Secretaría de Agricultura y Medio Ambiente">
+                      Secretaría de Agricultura y Medio Ambiente
+                    </option>
+                    <option value="Secretaría de Gobierno">Secretaría de Gobierno</option>
+                    <option value="Secretaría de Servicios Administrativos">
+                      Secretaría de Servicios Administrativos
+                    </option>
+                    <option value="Oficina de Comunicaciones">Oficina de Comunicaciones</option>
+                    <option value="Secretaría de Movilidad">Secretaría de Movilidad</option>
+                    <option value="Secretaría de Hacienda">Secretaría de Hacienda</option>
+                    <option value="Secretaría de Infraestructura">Secretaría de Infraestructura</option>
+                    <option value="Secretaría de Educación y Cultura">Secretaría de Educación y Cultura</option>
+                    <option value="Secretaría de Desarrollo y Bienestar Social">
+                      Secretaría de Desarrollo y Bienestar Social
+                    </option>
+                    <option value="Invicop">Invicop</option>
+                    <option value="Inder Copacabana">Inder Copacabana</option>
+                    <option value="Oficina Juridica">Oficina Juridica</option>
+                    <option value="Dirección técnica control interno">Dirección técnica control interno</option>
                   </select>
                 </div>
               </td>
